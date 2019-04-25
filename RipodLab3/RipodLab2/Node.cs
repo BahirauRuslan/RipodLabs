@@ -20,7 +20,7 @@ namespace RipodLab2
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as Node);
+            return this.Equals(obj as Node);
         }
 
         public bool Equals(Node other)
@@ -35,10 +35,10 @@ namespace RipodLab2
         public override int GetHashCode()
         {
             var hashCode = 1328362313;
-            hashCode = hashCode * -1521134295 + EqualityComparer<IList<Node>>.Default.GetHashCode(Parents);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Node>.Default.GetHashCode(Next);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Value);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Type);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<IList<Node>>.Default.GetHashCode(Parents);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<Node>.Default.GetHashCode(Next);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(Value);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(Type);
             return hashCode;
         }
     }

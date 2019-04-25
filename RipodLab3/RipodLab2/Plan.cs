@@ -5,7 +5,7 @@ namespace RipodLab2
 {
     public class Plan
     {
-        private IList<IList<Node>> steps;
+        private readonly IList<IList<Node>> steps;
 
         public Plan(Graph graph)
         {
@@ -62,15 +62,20 @@ namespace RipodLab2
                     }
                 }
 
-                foreach (var node in steps.Last())
-                {
-                    if (node.Next != null)
-                    {
-                        node.Next.Parents.Remove(node);
-                    }
-                }
+                RemoveParentsReferences();
 
                 graph.Roots = newNodes;
+            }
+        }
+
+        private void RemoveParentsReferences()
+        {
+            foreach (var node in steps.Last())
+            {
+                if (node.Next != null)
+                {
+                    node.Next.Parents.Remove(node);
+                }
             }
         }
 
