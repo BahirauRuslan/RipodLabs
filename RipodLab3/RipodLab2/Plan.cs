@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RipodLab2
@@ -11,6 +12,12 @@ namespace RipodLab2
         {
             steps = new List<IList<Node>>();
             CreatePlan(graph);
+        }
+
+        public Plan(Graph graph, int add, int mul)
+        {
+            steps = new List<IList<Node>>();
+            CreatePlan(graph, add, mul);
         }
 
         public int GetCountType(int step, string type)
@@ -31,6 +38,65 @@ namespace RipodLab2
         public IList<IList<Node>> GetSteps()
         {
             return steps;
+        }
+
+        private void CreatePlan(Graph graph, int plusType, int mulType)
+        {
+            var nodes = graph.Roots;
+            while (nodes.Count > 0)
+            {
+                var add = plusType;
+                var mul = mulType;
+                var newNodes = new List<Node>();
+                steps.Add(new List<Node>());
+
+                while (nodes.Count > 0 && (add > 0 || mul > 0))
+                {
+                    var criticalNode = (from node in nodes orderby node.LengthWay() select node).Last();
+                    if (criticalNode.Parents.Count == 0 && criticalNode.Next != null 
+                        && criticalNode.Type == "+" && add > 0)
+                    {
+                        steps.Last().Add(criticalNode);
+                        if (!HasNode(newNodes, criticalNode.Next))
+                        {
+                            newNodes.Add(criticalNode.Next);
+                        }
+                        add--;
+                    }
+                    else if (criticalNode.Parents.Count == 0 && criticalNode.Next != null
+                        && criticalNode.Type == "*" && mul > 0)
+                    {
+                        steps.Last().Add(criticalNode);
+                        if (!HasNode(newNodes, criticalNode.Next))
+                        {
+                            newNodes.Add(criticalNode.Next);
+                        }
+                        mul--;
+                    }
+                    else if (criticalNode.Parents.Count == 0 && criticalNode.Next == null 
+                        && criticalNode.Type == "+" && add > 0)
+                    {
+                        steps.Last().Add(criticalNode);
+                        add--;
+                    }
+                    else if (criticalNode.Parents.Count == 0 && criticalNode.Next == null
+                        && criticalNode.Type == "*" && mul > 0)
+                    {
+                        steps.Last().Add(criticalNode);
+                        mul--;
+                    }
+                    else if (!HasNode(newNodes, criticalNode))
+                    {
+                        newNodes.Add(criticalNode);
+                    }
+
+                    nodes.Remove(criticalNode);
+                }
+
+                RemoveParentsReferences();
+                newNodes.AddRange(nodes);
+                nodes = newNodes;
+            }
         }
 
         private void CreatePlan(Graph graph)
@@ -77,6 +143,20 @@ namespace RipodLab2
                     node.Next.Parents.Remove(node);
                 }
             }
+        }
+
+        private Node GetCriticalNode(IEnumerable<Node> nodes)
+        {
+            Node criticalNode = null;
+            foreach (var node in nodes)
+            {
+                if (criticalNode == null || node.LengthWay() > criticalNode.LengthWay())
+                {
+                    criticalNode = node;
+                }
+            }
+
+            return criticalNode;
         }
 
         private bool HasNode(IEnumerable<Node> nodes, Node node)
