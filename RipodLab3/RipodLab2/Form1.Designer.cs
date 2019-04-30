@@ -54,6 +54,11 @@
             this.taskLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.planButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.addTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.mulTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tasksTrackBar)).BeginInit();
@@ -69,7 +74,7 @@
             this.matrixGridView.ColumnHeadersHeight = 15;
             this.matrixGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.matrixGridView.ColumnHeadersVisible = false;
-            this.matrixGridView.Location = new System.Drawing.Point(12, 12);
+            this.matrixGridView.Location = new System.Drawing.Point(12, 29);
             this.matrixGridView.MultiSelect = false;
             this.matrixGridView.Name = "matrixGridView";
             this.matrixGridView.RowHeadersVisible = false;
@@ -87,7 +92,7 @@
             this.taskColumn,
             this.typeAddColumn,
             this.typeMulColumn});
-            this.resultGridView.Location = new System.Drawing.Point(12, 287);
+            this.resultGridView.Location = new System.Drawing.Point(12, 300);
             this.resultGridView.Name = "resultGridView";
             this.resultGridView.RowHeadersVisible = false;
             this.resultGridView.Size = new System.Drawing.Size(265, 153);
@@ -171,7 +176,7 @@
             // 
             // planButton
             // 
-            this.planButton.Location = new System.Drawing.Point(426, 417);
+            this.planButton.Location = new System.Drawing.Point(450, 430);
             this.planButton.Name = "planButton";
             this.planButton.Size = new System.Drawing.Size(75, 23);
             this.planButton.TabIndex = 7;
@@ -179,11 +184,57 @@
             this.planButton.UseVisualStyleBackColor = true;
             this.planButton.Click += new System.EventHandler(this.PlanButton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(287, 154);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(148, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Кол-во процессоров типа  +";
+            // 
+            // addTextBox
+            // 
+            this.addTextBox.Location = new System.Drawing.Point(290, 170);
+            this.addTextBox.Name = "addTextBox";
+            this.addTextBox.Size = new System.Drawing.Size(138, 20);
+            this.addTextBox.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(287, 193);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(146, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Кол-во процессоров типа  *";
+            // 
+            // mulTextBox
+            // 
+            this.mulTextBox.Location = new System.Drawing.Point(290, 209);
+            this.mulTextBox.Name = "mulTextBox";
+            this.mulTextBox.Size = new System.Drawing.Size(138, 20);
+            this.mulTextBox.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(176, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Матричное представление графа";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 452);
+            this.ClientSize = new System.Drawing.Size(537, 463);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.mulTextBox);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.addTextBox);
             this.Controls.Add(this.planButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.taskLabel);
@@ -193,7 +244,7 @@
             this.Controls.Add(this.resultGridView);
             this.Controls.Add(this.matrixGridView);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Лаб №3, гр. 10701116, Руслан";
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tasksTrackBar)).EndInit();
@@ -203,5 +254,11 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox addTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox mulTextBox;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -45,8 +45,10 @@ namespace RipodLab2
 
         private void PlanButton_Click(object sender, EventArgs e)
         {
+            int.TryParse(addTextBox.Text, out int add);
+            int.TryParse(mulTextBox.Text, out int mul);
             var graph = new GraphConstructor().ConstructGraph(this.matrixGridView, this.typeTextBox.Text);
-            var plan = new Plan(graph);
+            var plan = new Plan(graph, add, mul);
             this.FillResultGridView(plan);
         }
 
