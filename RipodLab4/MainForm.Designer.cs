@@ -105,6 +105,7 @@
             this.planButton.TabIndex = 20;
             this.planButton.Text = "План";
             this.planButton.UseVisualStyleBackColor = true;
+            this.planButton.Click += new System.EventHandler(this.PlanButton_Click);
             // 
             // label2
             // 
@@ -149,6 +150,7 @@
             this.tasksTrackBar.Size = new System.Drawing.Size(104, 45);
             this.tasksTrackBar.TabIndex = 15;
             this.tasksTrackBar.Value = 12;
+            this.tasksTrackBar.Scroll += new System.EventHandler(this.TasksTrackBar_Scroll);
             // 
             // resultGridView
             // 
@@ -230,7 +232,7 @@
             this.timeStepTextBox.Name = "timeStepTextBox";
             this.timeStepTextBox.Size = new System.Drawing.Size(63, 20);
             this.timeStepTextBox.TabIndex = 26;
-            this.timeStepTextBox.Text = "1";
+            this.timeStepTextBox.Text = "1,00";
             // 
             // operationTimeGridView
             // 
