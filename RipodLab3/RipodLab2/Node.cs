@@ -18,6 +18,20 @@ namespace RipodLab2
 
         public string Type { get; set; }
 
+        public int LengthWay()
+        {
+            var length = 0;
+            var node = this;
+
+            while (node.Next != null)
+            {
+                node = node.Next;
+                length++;
+            }
+
+            return length;
+        }
+
         public override bool Equals(object obj)
         {
             return this.Equals(obj as Node);
